@@ -1,15 +1,15 @@
-name: Auto Generate Log
-   on: [push]  # 触发条件：代码推送时运行
+   name: Auto Generate Log
+   on: [push]  # 触发条件：代码推送时运行[[3, 7]]
 
    jobs:
      deploy:
-       runs-on: ubuntu-latest  # 使用GitHub提供的Linux环境
+       runs-on: ubuntu-latest  # 使用GitHub提供的Linux环境[[17]]
        steps:
          - name: Checkout code
-           uses: actions/checkout@v4  # 检出仓库代码
+           uses: actions/checkout@v4  # 检出仓库代码[[16]]
 
          - name: SSH to Server & Create Log
-           uses: appleboy/ssh-action@v1.0.0  # 使用SSH连接服务器的Action
+           uses: appleboy/ssh-action@v1.0.0  # 使用SSH连接服务器的Action[[2]]
            with:
              host: ${{ secrets.SSH_HOST }}
              username: ${{ secrets.SSH_USER }}
@@ -19,3 +19,4 @@ name: Auto Generate Log
                TIMESTAMP=$(date +"%Y%m%d%H%M%S")
                touch /tmp/${TIMESTAMP}.log
                echo "Test at $(date)" >> /tmp/${TIMESTAMP}.log
+
